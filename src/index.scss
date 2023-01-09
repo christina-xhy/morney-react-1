@@ -1,0 +1,23 @@
+@import-normalize;
+@import "helper";
+* {margin: 0;padding: 0;}
+* {box-sizing: border-box;}
+*::before {box-sizing: border-box;}
+*::after {box-sizing: border-box;}
+ul, ol {
+  list-style: none;
+}
+//初始化设置reset css
+a {text-decoration: none; color: inherit;}
+//下划线无，默认颜色继承
+
+body {
+  font-family: $font-hei;//helper 内放$js代码申明的变量/
+  font-size: 16px;
+  line-height: 1.2;//默认行高
+}
+.icon {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+}
