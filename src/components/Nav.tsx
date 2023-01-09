@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import React from 'react';
 import Icon from './Icon';
 
@@ -19,6 +19,12 @@ const NavWrapper = styled.nav`
         //align-content Y轴--start/ space-between/space-around /space-evenly
         align-items: center;//Y轴 item（元素）stretch-center-start-end 自身大小居中 
         // justify-item stretch-center-start-end 自身大小居中 
+        &.selected{
+          color:grey;
+          .icon{
+            fill:grey;
+          }
+        }
         .icon {
           width: 24px;
           height: 24px;
@@ -33,25 +39,23 @@ const Nav = () => {
     <NavWrapper>
       <ul>
         <li>
-
-          <Link to="/tags">
+          <NavLink to="/tags" activeClassName="selected">
             <Icon name="tags"/>
             标签
-          </Link>
+          </NavLink>
         </li>
         <li>
-
-          <Link to="/money">
+          <NavLink to="/money" activeClassName="selected">
             <Icon name="dollar"/>
             记账页
-          </Link>
+          </NavLink>
         </li>
         <li>
 
-          <Link to="/statistics">
+          <NavLink to="/statistics" activeClassName="selected">
             <Icon name="charts"/>
             统计页
-          </Link>
+          </NavLink>
         </li>
       </ul>
     </NavWrapper>
