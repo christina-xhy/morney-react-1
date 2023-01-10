@@ -20,6 +20,11 @@ body {
 :focus{
   outline:none;//所有的鼠标获取input 的时候，没有外边框
 }
+.clearfix::after{
+  content:'';
+  display:block;
+  clear:both
+}
 button{
   font-family: inherit;
 }
