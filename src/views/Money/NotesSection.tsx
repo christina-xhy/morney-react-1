@@ -1,6 +1,7 @@
 import styled from "styled-components";
-
-const NotesSection =styled.section`
+import React, {useState} from 'react';
+//value 定义元素「note」非受控组件变为受控组件；
+const Wrapper =styled.section`
   background-color:#f5f5f5;
   padding:10px 16px;
   font-size:14px;
@@ -20,4 +21,23 @@ const NotesSection =styled.section`
     }
   }
 `
+const NotesSection:React.FC = ()=>{
+  const [note,setNote]=useState<string>('')
+  return(
+    <Wrapper>
+        <label>
+          <span>备注</span>
+          <input type='text' placeholder='在这里添加备注' value = {note} onChange={e => setNote(e.target.value)}/>
+        </label>
+    </Wrapper>
+  )
+}
+//非受控组件的写法
+//const refInput = useRef<HTMLInputElement>(null)
+// const onBlur = () =>{
+//   if(refInput.current !== null){
+//     setNote(refInput.current.value)
+//   }
+// }
+// <input type='text' placeholder='在这里添加备注' defaultValue={note} ref = {refInput} onBlur= {onBlur}/>
 export default NotesSection

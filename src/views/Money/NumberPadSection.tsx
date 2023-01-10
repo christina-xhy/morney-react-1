@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import React from 'react';
 
-const NumberPad = styled.section`
+const Wrapper= styled.section`
   display:flex;
   flex-direction: column;
   > .output{
@@ -64,4 +65,33 @@ const NumberPad = styled.section`
   }
 }
 `
+
+const NumberPad :React.FC =()=>{
+  return(
+    <Wrapper>
+        <div className='output'>100</div>
+        <div className='pad clearfix'>
+          <button>1</button>
+          <button>2</button>
+          <button>3</button>
+          <button>+</button>
+          <button>删除</button>
+          <button>4</button>
+          <button>5</button>
+          <button>6</button>
+          <button>-</button>
+          <button>清空</button>
+          <button>7</button>
+          <button>8</button>
+          <button>9</button>
+          <button>*</button>
+          <button className='ok'>Ok</button>
+          <button>0</button>
+          <button>.</button>
+          <button>%</button>
+          <button>/</button>
+        </div>
+    </Wrapper>
+  )
+}
 export default NumberPad
