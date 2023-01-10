@@ -17,6 +17,9 @@ body {
   line-height: 1.2;//默认行高
   background-color: #f5f5f5;
 }
+:focus{
+  outline:none;//所有的鼠标获取input 的时候，没有外边框
+}
 button{
   font-family: inherit;
 }
