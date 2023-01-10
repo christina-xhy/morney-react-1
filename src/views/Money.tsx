@@ -4,7 +4,12 @@ import styled from 'styled-components';
 
 const TagsSection =styled.section`
   background: #ffffff;
-  padding:0 16px;
+  padding:12px 16px;
+  display:flex;
+  flex-grow:1;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
   ol{
     margin:0 -12px;
     > li {
@@ -52,7 +57,7 @@ const NotesSection =styled.section`
 const CategorySection=styled.section`
  ul{
    display:flex;
-   background:lightsteelblue;
+   background:lightskyblue;
    font-size: 24px;
   >li{
     width:50%;
@@ -136,12 +141,17 @@ const NumberPad = styled.section`
       background:#9A9A9A;
   }
 }
-
+`
+//自定义组件添加styled，需要props传给<main>标签，再在layout.tsx 组件main上设置className
+//并且此处MyLayout包裹
+const MyLayout = styled(Layout)`
+  display:flex;
+  flex-direction: column;
 `
 
 function Money() {
   return (
-    <Layout>
+    <MyLayout>
       <TagsSection>
         <ol>
           <li>衣</li>
@@ -188,7 +198,7 @@ function Money() {
 
          </div>
       </NumberPad>
-    </Layout>
+    </MyLayout>
   );
 }
 

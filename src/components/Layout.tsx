@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   //占满固定高
   display: flex;//固定为flex布局
   flex-direction: column;
-  //wrapper和main 呈现上下结构布局 
+  //wrapper里的元素nav和main 呈现上下结构布局 
 `;
 const Main = styled.div`
   flex-grow: 1;//main的内容尽量足够高，flex足够高
@@ -16,7 +16,7 @@ const Main = styled.div`
 const Layout = (props: any) => {
   return (
     <Wrapper>
-      <Main>
+      <Main className = {props.className}>
         {props.children}
       </Main>
       <Nav/>

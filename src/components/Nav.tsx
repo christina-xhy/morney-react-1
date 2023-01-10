@@ -21,9 +21,9 @@ const NavWrapper = styled.nav`
         // justify-item stretch-center-start-end 自身大小居中 
         &.selected{
           color:grey;
-          .icon{
-            fill:grey;
-          }
+          //.icon{
+          //  fill:grey;
+          //}
         }
         .icon {
           width: 24px;
@@ -34,6 +34,7 @@ const NavWrapper = styled.nav`
   }
 `;
 
+//NavLink 需要配置svg0-loader，创建空的对象，如果改变颜色则是修改attrs ：fill
 const Nav = () => {
   return (
     <NavWrapper>
