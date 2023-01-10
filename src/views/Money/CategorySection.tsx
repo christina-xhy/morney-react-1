@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React from 'react';
+import React, {useState} from 'react';
 
 const Wrapper=styled.section`
  ul{
@@ -25,13 +25,24 @@ const Wrapper=styled.section`
 }
 `
 const CategorySection: React.FC = ()=>{
+  const categoryMap = {'+':'收入','-':'支出'}
+  type Keys = keyof typeof categoryMap
+  const [categoryList]= useState<Keys[]>(['+','-'])//定义两种string，要加[],还有()参数类型,因为不会变则不需要set
+  const [category,setCategory] =useState('-')//设置初始值
+
 return(
   <Wrapper>
     <ul >
-      <li className='selected'>支出</li>
-      <li>收入</li>
+      {categoryList.map((c:'+' | '-')=>{
+        return(<li key={c} className={category === c ? 'selected' : ''}
+                   onClick={()=>{setCategory(c)}}>{categoryMap[c]}</li>)
+      })}
     </ul>
+
   </Wrapper>
 )
+  //来设置数据的切换，点击谁就渲染谁
+  // <li className={category === "-" ? 'selected' : '' } onClick={()=>{setCategory('-')}}>支出</li>
+  // <li className={category === "+" ? 'selected' : ''} onClick={()=>{setCategory('+')}}>收入</li>
 }
 export default CategorySection
