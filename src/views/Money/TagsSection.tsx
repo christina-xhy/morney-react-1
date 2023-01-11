@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import React from 'react';
 import useTags from '../../useTag';
+import {createId} from '../../lib/createId';
 
 const Wrapper=styled.section`
   background: #ffffff;
@@ -45,7 +46,7 @@ const TagsSection : React.FC<Props> =(props)=>{
   const onAddTag = ()=>{
     const tagName = window.prompt("新标签的名称为")
     if(tagName !== null){
-      setTags([...tags,{id:Math.random(),name:tagName}])
+      setTags([...tags,{id:createId(),name:tagName}])
     }
   }//二、 49 --因为setTags要求的类型是id:number name:string. 所以tagName 的类型也要符合要求，所以添加一个随机的id 和name
   //三、 54 --原本类型是id:number name:string，但是name是变量，所以选中元素只保存常量id
@@ -70,7 +71,7 @@ const TagsSection : React.FC<Props> =(props)=>{
     <Wrapper>
       <ol>
         {tags.map((tag ) =>
-          <li key={tag.id} onClick={()=>{onToggleTag(tag.id)}} className={isSelected(tag.id)}>{tag}</li>
+          <li key={tag.id} onClick={()=>{onToggleTag(tag.id)}} className={isSelected(tag.id)}>{tag.name}</li>
         )}
       </ol>
       <button onClick={onAddTag} >新增标签</button>
