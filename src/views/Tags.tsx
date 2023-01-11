@@ -42,17 +42,18 @@ display:flex;
   margin-top: 50px;
 `
 //'/tags/'不要忘记两个/ ，先设置跳转 --再在APP添加router（此处时候创建路由） <Route path ="/tags/：tag">组件名<Route> 也就是新的页面
+//56 react不能渲染对象，只能渲染字符串 因此{tag}改为{tag.name}
 function Tags() {
-  const {tags,setTags} = useTags()//这个是对象哈希获取元素，注意区分useState本身的写法 【】
+  const {tags} = useTags()//这个是对象哈希获取元素，注意区分useState本身的写法 【】
   return (
     <Layout>
       <TagList>
         {
           tags.map(tag => {
             return(
-              <li key={tag}>
+              <li key={tag.id}>
                 <Link to={'/tags/'+ tag}>
-                  <span className = 'oneLine'>{tag}</span>
+                  <span className = 'oneLine'>{tag.name}</span>
                   <Icon name='right'/>
                 </Link>
               </li>
