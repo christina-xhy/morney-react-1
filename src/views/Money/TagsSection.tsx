@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import React from 'react';
 import {useState} from 'react';
+import useTags from '../../useTag';
 
 const Wrapper=styled.section`
   background: #ffffff;
@@ -39,7 +40,7 @@ type Props = {
   onChange:(value:string[])=> void;
 }//定义一个类型，这个类型是父传子通信传过来的
 const TagsSection : React.FC<Props> =(props)=>{
-  const [tags,setTags] = useState<string[]>(['衣','食','住','行'])
+  const {tags,setTags} = useTags()
   // const [selectedTags,setSelectedTags] = useState<string[]>([])//原本没有存储的数据需要创建selectedTags.
   const selectedTags = props.value
   const onAddTag = ()=>{
