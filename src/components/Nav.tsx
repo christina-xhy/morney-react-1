@@ -35,6 +35,7 @@ const NavWrapper = styled.nav`
 `;
 
 //NavLink 需要配置svg0-loader，创建空的对象，如果改变颜色则是修改attrs ：fill
+//NavLink activeClassName 属性表示点击图标同时也可以跳转
 const Nav = () => {
   return (
     <NavWrapper>
