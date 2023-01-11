@@ -24,6 +24,9 @@ const Wrapper= styled.section`
       float:right;//浮动定位子右；如果爷爷display：flex则孙子浮动了，爸爸不会坍塌。
       //另一个方法是清楚浮动定位clearfix，现在scss设置初始化，然后直接在爸爸后面添加伪元素即可
     }
+    &.zero{
+      width:50%;
+  }
     &:nth-child(1) {
       background: #E0E0E0;
     }
@@ -48,14 +51,13 @@ const Wrapper= styled.section`
       &:nth-child(14),
       &:nth-child(8)
       {
-        background:#A9A9A9;
+        background:#C1C1C1;
       }
     &:nth-child(15)
     {
       background:#B8B8B8;
     }
     &:nth-child(12)
-    &:nth-child(16)
     { 
       background:#A9A9A9;
   }
@@ -140,8 +142,7 @@ const NumberPad :React.FC =()=>{
           <button>8</button>
           <button>9</button>
           <button className='ok'>Ok</button>
-          <button>0</button>
-          <button>00</button>
+          <button className='zero'>0</button>
           <button>.</button>
         </div>
     </Wrapper>
