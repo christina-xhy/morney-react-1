@@ -26,28 +26,25 @@ function Money() {
     category:'-' as Category,
     amount: 0
   })
+
+    //变量以参数形式传入动态修改，数据类型是obj ,同时需要设置参数类型
+    //typeof 是获取值得类型 Partial 是部分类型
+  const onChange= (obj : Partial< typeof selected>) =>{
+    setSelected({
+      ...selected,
+      ...obj
+    })
+  }
   return (
     <MyLayout>
       <TagsSection  value = {selected.tags}
-                    onChange={ (tags) =>setSelected({
-                      ...selected,
-                      tags:tags
-                    })}/>
+                    onChange={ (tags) =>onChange({tags})}/>
       <NotesSection value ={selected.note}
-                    onChange ={ (note)=> setSelected({
-                        ...selected,
-                        note:note
-                      })}/>
+                    onChange ={ (note)=> onChange({note})}/>
       <CategorySection value ={selected.category}
-                       onChange ={(category)=> setSelected({
-                         ...selected,
-                         category: category
-                       })}/>
+                       onChange ={(category)=> onChange({category})}/>
       <NumberPad  value ={selected.amount}
-                  onChange ={(amount)=> setSelected({
-                    ...selected,
-                    amount:amount
-                    })}/>
+                  onChange ={(amount)=> onChange({amount})}/>
     </MyLayout>
   );
 }
