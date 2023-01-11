@@ -3,21 +3,31 @@ import React, {useState} from 'react';
 import {Wrapper} from './NumberPadSection/Wrapper';
 import {generateOutput} from './NumberPadSection/CaculateOutput';
 
-
-const NumberPad :React.FC =()=>{
-  const [output,_setOutput] = useState<string>('0')
+type Props = {
+  value:number,
+  onChange: (value:number) => void
+  onOk?: ()=> void
+}
+const NumberPad :React.FC<Props>=(props)=>{
+  // const [output,_setOutput] = useState<string>('0')
+  const output = props.value.toString()
   const setOutput = (output:string)=>{
+    let money
     if(output.length>16){
-    output = output.slice(0,16)
+       money = parseFloat(output.slice(0,16))
     }else if(output.length === 0){
-      output = '0'
+       money = 0;
+    }else{
+       money = parseFloat(output)
     }
-    _setOutput(output)
+    props.onChange(money)
   }
   const onClickButtonWrapper = (e:React.MouseEvent)=>{
     const text = (e.target as HTMLButtonElement) .textContent
     if(text === null){return}
-    if(text === 'ok'){return}
+    if(text === 'ok'){
+     if(props.onOk){props.onOk()}
+    }
     if('0123456789.'.split('').concat(['删除','清空']).indexOf(text)>=0){
       setOutput(generateOutput(text,output))
     }

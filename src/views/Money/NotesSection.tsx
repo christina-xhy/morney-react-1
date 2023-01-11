@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, {useState} from 'react';
+import React from 'react';
 //value 定义元素「note」非受控组件变为受控组件；
 const Wrapper =styled.section`
   background-color:#f5f5f5;
@@ -21,13 +21,17 @@ const Wrapper =styled.section`
     }
   }
 `
-const NotesSection:React.FC = ()=>{
-  const [note,setNote]=useState<string>('')
+type Props = {
+  value: string;
+  onChange: (value:string) => void
+}
+const NotesSection:React.FC<Props> = (props)=>{
+  const note =props.value
   return(
     <Wrapper>
         <label>
           <span>备注</span>
-          <input type='text' placeholder='在这里添加备注' value = {note} onChange={e => setNote(e.target.value)}/>
+          <input type='text' placeholder='在这里添加备注' value = {note} onChange={e => props.onChange(e.target.value)}/>
         </label>
     </Wrapper>
   )

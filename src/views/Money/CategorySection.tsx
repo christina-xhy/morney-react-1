@@ -24,18 +24,22 @@ const Wrapper=styled.section`
   }
 }
 `
-const CategorySection: React.FC = ()=>{
+type Props = {
+  value: '-' | '+'
+  onChange: ( value: '-' | '+')=> void
+}
+const CategorySection: React.FC<Props>= (props)=>{
   const categoryMap = {'+':'收入','-':'支出'}
   type Keys = keyof typeof categoryMap
   const [categoryList]= useState<Keys[]>(['+','-'])//定义两种string，要加[],还有()参数类型,因为不会变则不需要set
-  const [category,setCategory] =useState('-')//设置初始值
-
+  // const [category,setCategory] =useState('-')//设置初始值
+  const category = props.value
 return(
   <Wrapper>
     <ul >
       {categoryList.map((c:'+' | '-')=>{
         return(<li key={c} className={category === c ? 'selected' : ''}
-                   onClick={()=>{setCategory(c)}}>{categoryMap[c]}</li>)
+                   onClick={()=>{props.onChange(c)}}>{categoryMap[c]}</li>)
       })}
     </ul>
 
