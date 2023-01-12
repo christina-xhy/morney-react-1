@@ -1,8 +1,10 @@
 
 // 函数自定义ID
-let id = 0
-const createId = ()=>{
+// 防止每次id    重复回到     初始值之后的id 调用
+let id = parseInt(window.localStorage.getItem('idMax') || '0')  //id是number类型， 用时得转为number
+const createId = (): number=>{
   id += 1;
+  window.localStorage.setItem('idMax',JSON.stringify(id)) // localstorage只接受字符串，渲染时得是字符串
   return id
 }
 

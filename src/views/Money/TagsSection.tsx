@@ -47,9 +47,10 @@ const TagsSection : React.FC<Props> =(props)=>{
   //   const tagName = window.prompt("新标签的名称为")
   //   if(tagName !== null){
   //     setTags([...tags,{id:createId(),name:tagName}])
-  //   }
+  //   } 实现同级目录页面之间的 数据同步需要记录到localstorage ，这封装了 addtag
+
   // }//二、 49 --因为setTags要求的类型是id:number name:string. 所以tagName 的类型也要符合要求，所以添加一个随机的id 和name
-  //三、 54 --原本类型是id:number name:string，但是name是变量，所以选中元素只保存常量id
+  //三、 75--原本类型是id:number name:string，但是name是变量，所以选中元素只保存常量id
   // 因此设置selectedTagIds=props.value 修改value的类型
   //四 58/60行 都是接收的number类型为参数，所以onChange类型也要在Props里面修改为number【】
   const onToggleTag = (tagId : number)=>{
