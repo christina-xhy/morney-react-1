@@ -11,7 +11,7 @@ const defaultTags =[
 ]
 //定义在useTags函数外面，数据则只渲染一次。或者用use其他的hook 包裹
 const useTags = ()=>{
-  const [tags,setTags] = useState<{id: number,name: string}[]>(defaultTags)
+  const [tags,setTags] = useState<{id: number,name: string}[]>([])
   const findTag = (id:number) => tags.filter(tag => tag.id === id)[0];//数组的第0项是vale=string
 
   const findTagIndex = ( id: number ) => {
@@ -46,10 +46,16 @@ const deleteTag = ( id:number ) =>{
   //   tagsClone.splice(index,1)
   //   setTags(tagsClone)
   // }
+  const addTag = ()=>{
+    const tagName = window.prompt("新标签的名称为")
+    if(tagName !== null){
+      setTags([...tags,{id:createId(),name:tagName}])
+    }
+  }
 
 
 
-  return {tags,setTags,findTag,updateTag,findTagIndex,deleteTag} //必须 对象形式  return出去
+  return {tags,setTags,findTag,updateTag,findTagIndex,deleteTag,addTag} //必须 对象形式  return出去
 }
 
 export default  useTags

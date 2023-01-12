@@ -32,7 +32,7 @@ const TagList =styled.ol`
 //42. 在通过id设置路由时就实现了双向绑定。所以tag 通过useParams()hook定义参数 找到上一级目录的数据
 
 function Tags() {
-  const {tags} = useTags()//这个是对象哈希获取元素，注意区分useState本身的写法 【】
+  const {tags,addTag} = useTags()//这个是对象哈希获取元素，注意区分useState本身的写法 【】
   return (
     <Layout>
       <TagList>
@@ -49,7 +49,7 @@ function Tags() {
         }
       </TagList>
       <CenterWrapper>
-        <ButtonWrapper>新增标签</ButtonWrapper>
+        <ButtonWrapper onClick={addTag}>新增标签</ButtonWrapper>
       </CenterWrapper>
     </Layout>
   );
