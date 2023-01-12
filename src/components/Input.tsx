@@ -12,7 +12,7 @@ const InputWrapper = styled.label`
     > input {
       background: none;
       border: none;
-      height: 72px;
+      height: 44px;
       width: 100%; //输入框100%，会影响另一个元素（span）的距离，设置span的white-space ：nowrap;
       display: block; //盒子的宽度占满当前一行会出现另起一行，则在label 父元素设置display：flex;
   }

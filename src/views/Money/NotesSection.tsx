@@ -4,7 +4,7 @@ import {Input} from 'components/Input';
 //value 定义元素「note」非受控组件变为受控组件；
 const Wrapper =styled.section`
   background-color:#f5f5f5;
-  padding:10px 16px;
+  padding:28px 16px;
   font-size:14px;
 `
 type Props = {
@@ -19,7 +19,7 @@ const NotesSection:React.FC<Props> = (props)=>{
 
   return(
     <Wrapper>
-      <Input label = '备注'  type = 'text' value = {note} onChange={onChange}>
+      <Input label = '备注'  type = 'text' value = {note} onChange={onChange} placeholder='在这里添加备注'>
       </Input>
     </Wrapper>
   )

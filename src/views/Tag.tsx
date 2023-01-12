@@ -6,6 +6,7 @@ import Icon from 'components/Icon';
 import {ButtonWrapper} from 'components/Button';
 import styled from 'styled-components';
 import {Input} from '../components/Input';
+import {CenterWrapper} from '../components/Center';
 const Topbar = styled.header`
   display:flex;
   justify-content: space-between;
@@ -15,8 +16,14 @@ const Topbar = styled.header`
   background: white;
 `
 
+const InputWrapper = styled.div`
+  background:white;
+  padding: 0 16px;
+  margin-top: 8px;
+`
 
-const Tag: React.FC =(props) =>{
+
+const Tag: React.FC =() =>{
   type Params = {
     id:string
   }//需要定义
@@ -31,12 +38,12 @@ const Tag: React.FC =(props) =>{
         <span>编辑标签</span>
         <Icon/>
       </Topbar>
-      <div>
-        <Input type = 'text' placeholder='标签名' label = '新增标签'/>
-      </div>
-     <div>
+      <InputWrapper>
+        <Input type = 'text' placeholder='标签名' label = '新增标签' value={tag.name}/>
+      </InputWrapper>
+     <CenterWrapper>
        <ButtonWrapper>删除标签</ButtonWrapper>
-     </div>
+     </CenterWrapper>
     </Layout>
   )
 }

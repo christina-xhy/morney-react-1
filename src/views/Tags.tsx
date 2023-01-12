@@ -1,25 +1,19 @@
-import Layout from '../components/Layout';
+import Layout from 'components/Layout';
 import React from 'react';
-import useTags from '../useTag';
+import useTags from 'useTag';
 import styled from 'styled-components';
-import Icon from '../components/Icon';
+import Icon from 'components/Icon';
 import {Link} from 'react-router-dom';
-import {ButtonWrapper} from '../components/Button';
+import {ButtonWrapper} from 'components/Button';
+import {CenterWrapper} from 'components/Center';
 
-const Center= styled.div`
-display:flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 50px;
-`
+
 
 const TagList =styled.ol`
   font-size:16px;
   > li{
     box-sizing: border-box;
     border-bottom: 1px solid #D5D5D5 ;
-    
-    
     margin-left: 16px;
     &:hover {
       cursor:pointer;
@@ -52,9 +46,9 @@ function Tags() {
           )})
         }
       </TagList>
-      <Center>
+      <CenterWrapper>
         <ButtonWrapper>新增标签</ButtonWrapper>
-      </Center>
+      </CenterWrapper>
     </Layout>
   );
 }

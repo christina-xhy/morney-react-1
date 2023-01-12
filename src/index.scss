@@ -30,8 +30,9 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-button{
+button,input{
   font-family: inherit;
+  font-size: inherit;
 }
 .icon {
   width: 1em;
