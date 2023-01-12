@@ -5,7 +5,7 @@ import Layout from 'components/Layout';
 import Icon from 'components/Icon';
 import {ButtonWrapper} from 'components/Button';
 import styled from 'styled-components';
-
+import {Input} from '../components/Input';
 const Topbar = styled.header`
   display:flex;
   justify-content: space-between;
@@ -32,8 +32,7 @@ const Tag: React.FC =(props) =>{
         <Icon/>
       </Topbar>
       <div>
-        <span>标签名</span>
-        <input type='text' placeholder='标签名'/>
+        <Input type = 'text' placeholder='标签名' label = '新增标签'/>
       </div>
      <div>
        <ButtonWrapper>删除标签</ButtonWrapper>

@@ -5,7 +5,6 @@ const InputWrapper = styled.label`
     display: flex; //flex布局
     align-items: center;
     > span {
-      
       margin-right: 16px; //元素之间的距离
       white-space: nowrap;
     }
@@ -22,15 +21,13 @@ type Props = {
   label :string;
 } & React.InputHTMLAttributes<HTMLInputElement>//继承原本的属性 + 自定义新增label属性 ，展示在span
 //input 剩下所以属性全部复制到input 组件 。。。。必须是组件 { ...rest  }
-
+//设置
 const Input :React.FC<Props> = (props)=>{
   const {label,children,...rest} = props
  return(
     <InputWrapper>
-        <label>
           <span>{props.label}</span>
           <input { ...rest }/>
-        </label>
     </InputWrapper>
  )
 }
