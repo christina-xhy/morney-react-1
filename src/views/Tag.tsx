@@ -2,11 +2,21 @@ import React from 'react';
 import {useParams} from 'react-router-dom';
 import useTags from 'useTag';
 import Layout from 'components/Layout';
-import Icon from '../components/Icon';
-import {ButtonWrapper} from '../components/Button';
+import Icon from 'components/Icon';
+import {ButtonWrapper} from 'components/Button';
+import styled from 'styled-components';
+
+const Topbar = styled.header`
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height:20px;
+  padding:14px;
+  background: white;
+`
+
 
 const Tag: React.FC =(props) =>{
-
   type Params = {
     id:string
   }//需要定义
@@ -16,10 +26,11 @@ const Tag: React.FC =(props) =>{
   const tag = findTag(parseInt(id));
   return(
     <Layout>
-      <header>
+      <Topbar>
         <Icon name = 'left'/>
         <span>编辑标签</span>
-      </header>
+        <Icon/>
+      </Topbar>
       <div>
         <span>标签名</span>
         <input type='text' placeholder='标签名'/>
