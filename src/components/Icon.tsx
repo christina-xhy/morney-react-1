@@ -6,13 +6,13 @@ try {importAll(require.context('icons', true, /\.svg$/));} catch (error) {consol
 //同时需要安装 yarn add --dev @types/webpack-nev 则解除bug/ __WebpackModuleApi
 //how to require whole loader; //webpack-env contains module and require in global namespace.
 type Props = {
-  name: string
+  name?: string
 }
 //声明类型，必须大写，并在函数参数传入类型
 const Icon = (props: Props) => {
   return (
     <svg className="icon">
-      <use xlinkHref={'#' + props.name}/>
+      { props.name && <use xlinkHref={'#' + props.name}/>}
     </svg>
   );//抽取规律，常量和变量
 };
