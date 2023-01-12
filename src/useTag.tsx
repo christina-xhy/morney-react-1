@@ -21,20 +21,29 @@ const useTags = ()=>{
       }
     }
   }
-  //得到最新的tags
   const updateTag = (id:number,obj:{name:string}) =>{
-    const index = findTagIndex(id)
-    const tagsClone = JSON.parse(JSON.stringify(tags))//深拷贝tags  // 转为字符串，再转为json对象
-    // const newTags = tagClone.splice(index,1,{id:id,name:obj.name}) // 删除其中选中的一个，传出删除的对象
-    tagsClone.splice(index,1,{id:id , name:obj.name});
-    setTags(tagsClone)//更新数据，实现修改原本的标签的 目的
+  setTags(tags.map(tag => tag.id === id ? {id,name: obj.name} : tag));
   }
-  const deleteTag = (id:number) =>{
-    const index = (id:number)  => tags.filter(tag => tag.id === id)[0];
-    const tagsClone = JSON.parse(JSON.stringify(tags))
-    tagsClone.splice(index,1)
-    setTags(tagsClone)
-  }
+  //一 、得到最新的tags---深拷贝方式
+  // const updateTag = (id:number,obj:{name:string}) =>{
+  //   const index = findTagIndex(id)
+  //   const tagsClone = JSON.parse(JSON.stringify(tags))//深拷贝tags  // 转为字符串，再转为json对象
+  //   // const newTags = tagClone.splice(index,1,{id:id,name:obj.name}) // 删除其中选中的一个，传出删除的对象
+  //   tagsClone.splice(index,1,{id:id , name:obj.name});
+  //   setTags(tagsClone)//更新数据，实现修改原本的标签的，找相同 修改旧的为新的目的
+  // }
+const deleteTag = ( id:number ) =>{
+    setTags(tags.filter(tag => tag.id !== id))
+}
+//找到不是选中的那个，返回出来
+
+  //二 、删除这个标签
+  // const deleteTag = (id:number) =>{
+  //   const index = findTagIndex(id)
+  //   const tagsClone = JSON.parse(JSON.stringify(tags))
+  //   tagsClone.splice(index,1)
+  //   setTags(tagsClone)
+  // }
 
 
 
