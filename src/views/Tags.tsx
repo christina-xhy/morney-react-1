@@ -29,6 +29,8 @@ const TagList =styled.ol`
 
 //'/tags/'不要忘记两个/ ，先设置跳转 --再在APP添加router（此处时候创建路由） <Route path ="/tags/：tag">组件名<Route> 也就是新的页面
 //56 react不能渲染对象，只能渲染字符串 因此{tag}改为{tag.name}
+//42. 在通过id设置路由时就实现了双向绑定。所以tag 通过useParams()hook定义参数 找到上一级目录的数据
+
 function Tags() {
   const {tags} = useTags()//这个是对象哈希获取元素，注意区分useState本身的写法 【】
   return (

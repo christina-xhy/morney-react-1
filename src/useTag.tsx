@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import {createId} from './lib/createId';
+import classnames from 'classnames'
 
 //自定义hook 封装成组件
 const defaultTags =[
@@ -12,6 +13,7 @@ const defaultTags =[
 const useTags = ()=>{
   const [tags,setTags] = useState<{id: number,name: string}[]>(defaultTags)
   const findTag = (id:number) => tags.filter(tag => tag.id === id)[0];//数组的第0项是vale=string
+
   const findTagIndex = ( id: number ) => {
     let result = -1;
     for (let i = 0;i <= tags.length ;i++){
@@ -34,7 +36,7 @@ const useTags = ()=>{
   // }
 const deleteTag = ( id:number ) =>{
     setTags(tags.filter(tag => tag.id !== id))
-}
+}//父子通信二
 //找到不是选中的那个，返回出来
 
   //二 、删除这个标签
