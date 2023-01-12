@@ -4,6 +4,14 @@ import useTags from '../useTag';
 import styled from 'styled-components';
 import Icon from '../components/Icon';
 import {Link} from 'react-router-dom';
+import {ButtonWrapper} from '../components/Button';
+
+const Center= styled.div`
+display:flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+`
 
 const TagList =styled.ol`
   font-size:16px;
@@ -24,23 +32,7 @@ const TagList =styled.ol`
    }
   }
 `
-const ButtonWrapper = styled.button`
-  font-size: 18px;
-  border:none;
-  padding:8px 12px;
-  border-radius: 4px;
-  background: #f60;
-  color:white;
-  &:hover{
-    cursor:pointer;
-  }
-`
-const Center= styled.div`
-display:flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 50px;
-`
+
 //'/tags/'不要忘记两个/ ，先设置跳转 --再在APP添加router（此处时候创建路由） <Route path ="/tags/：tag">组件名<Route> 也就是新的页面
 //56 react不能渲染对象，只能渲染字符串 因此{tag}改为{tag.name}
 function Tags() {

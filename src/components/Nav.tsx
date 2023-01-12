@@ -35,13 +35,13 @@ const NavWrapper = styled.nav`
 `;
 
 //NavLink 需要配置svg0-loader，创建空的对象，如果改变颜色则是修改attrs ：fill
-//NavLink activeClassName 属性表示点击图标同时也可以跳转
+//NavLink activeClassName 属性表示点击图标同时也可以跳转，添加上exact精准匹配，则进入tag:id 就不会再变红，但是一般不加
 const Nav = () => {
   return (
     <NavWrapper>
       <ul>
         <li>
-          <NavLink to="/tags" activeClassName="selected">
+          <NavLink to="/tags"  activeClassName="selected">
             <Icon name="tags"/>
             标签
           </NavLink>
