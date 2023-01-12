@@ -26,11 +26,15 @@ const InputWrapper = styled.div`
 const Tag: React.FC =() =>{
   type Params = {
     id:string
-  }//需要定义
-  const {findTag} = useTags() //注意不是数组，需要 使用大括号{}
-  let { id } = useParams<Params>() //react-router路由属性，获取浏览器地址栏 ----用户输入的数据，但是需要申明类型
-  // params才能够获取到id
-  const tag = findTag(parseInt(id));
+  }//需要定义  //31  params才能够获取到id
+  const {findTag,updateTag} = useTags() //注意不是数组，需要 使用大括号{}
+  let { id :idString} = useParams<Params>() //react-router路由属性，获取浏览器地址栏 ----用户输入的数据 //id:idString重命名id
+  // 但是需要申明类型且必须是string
+
+  //tag 是和初始值一样的数据类型
+  //string转为数字number,作为参数给findTag
+  const tag = findTag(parseInt(idString));
+
   return(
     <Layout>
       <Topbar>
@@ -39,7 +43,11 @@ const Tag: React.FC =() =>{
         <Icon/>
       </Topbar>
       <InputWrapper>
-        <Input type = 'text' placeholder='标签名' label = '新增标签' value={tag.name}/>
+        <Input type = 'text' placeholder='标签名' label = '新增标签' value={tag.name}
+               onChange={ (e) => {
+                 updateTag(tag.id,{name:e.target.value})
+               }}
+        />
       </InputWrapper>
      <CenterWrapper>
        <ButtonWrapper>删除标签</ButtonWrapper>
