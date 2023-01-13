@@ -9,18 +9,18 @@ type Props = {
   onOk?: ()=> void
 }
 const NumberPad :React.FC<Props>=(props)=>{
-  // const [output,_setOutput] = useState<string>('0')
-  const output = props.value.toString()
+  const [output,_setOutput] = useState(props.value.toString())
   const setOutput = (output:string)=>{
-    let money
+    let newOutput
     if(output.length>16){
-       money = parseFloat(output.slice(0,16))
+       newOutput = output.slice(0,16)
     }else if(output.length === 0){
-       money = 0;
+       newOutput = '0'
     }else{
-       money = parseFloat(output)
+       newOutput = output
     }
-    props.onChange(money)
+    _setOutput(output)
+    props.onChange(parseFloat(newOutput))
   }
   const onClickButtonWrapper = (e:React.MouseEvent)=>{
     debugger

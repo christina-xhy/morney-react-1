@@ -37,11 +37,11 @@ const useRecords  = ()=> {
 
   const addRecord = (newRecord: newRecordItem) => {
     if(newRecord.amount === 0 ){
-      alert('请输入金额')
+      alert('请输入金额')//用户输入0时 弹出信息
       return false
     }
     if(newRecord.tagIds.length === 0){
-     alert('请选择标签');
+     alert('请选择标签');//用户如果没有选择标签  弹出信息
      return false
     }
     const record ={...newRecord,createdAt:(new Date()).toISOString()}//在原本的类型上，新增一个新的类型并渲染
