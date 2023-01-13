@@ -88,9 +88,14 @@ const deleteTag = ( id:number ) =>{
     }
   }
 
+  const getName = (id:number)=>{
+    const tag = tags.filter(t => t.id === id)[0]
+    return tag? tag.name : '';
+  }
 
+  //类型是ID和Name 那个数据
 
-  return {tags,setTags,findTag,updateTag,findTagIndex,deleteTag,addTag} //必须 对象形式  return出去
+  return {tags,setTags,findTag,updateTag,findTagIndex,deleteTag,addTag,getName} //必须 对象形式  return出去
 }
 
 export default  useTags

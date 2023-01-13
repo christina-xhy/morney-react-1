@@ -23,7 +23,6 @@ const NumberPad :React.FC<Props>=(props)=>{
     props.onChange(parseFloat(newOutput))
   }
   const onClickButtonWrapper = (e:React.MouseEvent)=>{
-    debugger
     const text = (e.target as HTMLButtonElement).textContent
     if(text === null){return}
     if(text === 'Ok'){
