@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
-import {createId} from './lib/createId';
+import {createId} from '../lib/createId';
 import classnames from 'classnames'
-import {useUpdate} from './hooks/useUpdate';
+import {useUpdate} from './useUpdate';
 
 //自定义hook 封装成组件
 const defaultTags =[
@@ -11,15 +11,14 @@ const defaultTags =[
 
 //19行 getItem 刷新后获取页面local storage 的值 ，注意需要JSON.parse
 
-//after mount 第一次挂载就获取，渲染
-//[]为保底，不为undefined
+
 // localstorage 持久化defaultTags
 //在get时做判断，并设置初始值
 const useTags = ()=>{
   const [tags,setTags] = useState<{id: number,name: string}[]>([])
   //下次更新希望去localstorage获取数据
   useEffect(()=>{
-   let localTags = JSON.parse(    window.localStorage.getItem('tags') || '[]')
+   let localTags = JSON.parse(    window.localStorage.getItem('tags') || '[]')//[]为保底，不为undefined
     if(localTags.length === 0 ){
       localTags = [
         {id:createId(),name:'衣'},
@@ -30,6 +29,7 @@ const useTags = ()=>{
     }
     setTags(localTags)
   },[])
+  //after mount 第一次挂载就获取，渲染 也就是udefine 变为【】
 //组件挂在时渲染，每次刷新一次时渲染。此时localstorage 数据持久化
 
 
@@ -41,10 +41,13 @@ const useTags = ()=>{
   //再setItem
   useUpdate(()=>{
     window.localStorage.setItem('tags',JSON.stringify(tags));//这里必须变为string ，不能用tostring
-  },[tags]) // 这里必须是不可变数据，不能修改tags。每次修改只能是新的tags
+  },[tags]) // 这里必须是不可变数据，不能修改tags。   所以每次修改只能是新的tags
 
 
-  const findTag = (id:number) => tags.filter(tag => tag.id === id)[0];//数组的第0项是vale=string
+  const findTag = (id:number) => tags.filter(tag => tag.id === id)[0];//【0】返回新数组的第一个元素
+  //数组的第0项是vale=string 也就是ID属性值
+  // 因为接受的参数类型 id:number 必须是number，且接受的是一个number ，所以[0] 最后返回findTag
+
   const findTagIndex = ( id: number ) => {
     let result = -1;
     for (let i = 0;i <= tags.length ;i++){

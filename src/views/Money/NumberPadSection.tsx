@@ -23,13 +23,15 @@ const NumberPad :React.FC<Props>=(props)=>{
     props.onChange(money)
   }
   const onClickButtonWrapper = (e:React.MouseEvent)=>{
-    const text = (e.target as HTMLButtonElement) .textContent
+    debugger
+    const text = (e.target as HTMLButtonElement).textContent
     if(text === null){return}
-    if(text === 'ok'){
+    if(text === 'Ok'){
      if(props.onOk){props.onOk()}
     }
+    //这里使用onOk类型是函数，在使用的地方去调用onOk，也就是本文档的money.tsx  传入这个函数 submit 函数
     if('0123456789.'.split('').concat(['删除','清空']).indexOf(text)>=0){
-      setOutput(generateOutput(text,output))
+      setOutput(generateOutput(text,output))//split是分开，splice是删除(index,1)  //filter 是查找
     }
   }
   return(

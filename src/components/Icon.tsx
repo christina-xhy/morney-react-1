@@ -5,7 +5,7 @@ import classnames from 'classnames'
 let importAll = (requireContext: __WebpackModuleApi.RequireContext) => requireContext.keys().forEach(requireContext);
 try {importAll(require.context('icons', true, /\.svg$/));} catch (error) {console.log(error);}
 //引入icon，取代require 。防止被treeShaking.
-//同时需要安装 yarn add --dev @types/webpack-nev 则解除bug/ __WebpackModuleApi
+//同时需要安装 yarn add --dev @types/webpack-nev 则解除bug/ __WebpackModuleApi下划线
 //how to require whole loader; //webpack-env contains module and require in global namespace.
 type Props = {
   name?: string

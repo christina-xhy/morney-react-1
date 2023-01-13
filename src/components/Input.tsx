@@ -21,7 +21,7 @@ type Props = {
   label :string;
 } & React.InputHTMLAttributes<HTMLInputElement>//继承原本的属性 + 自定义新增label属性 ，展示在span
 //input 剩下所以属性全部复制到input 组件 。。。。必须是组件 { ...rest  }
-//设置
+//设置组件时要定义一下 React.FC<Props>
 const Input :React.FC<Props> = (props)=>{
   const {label,children,...rest} = props
  return(

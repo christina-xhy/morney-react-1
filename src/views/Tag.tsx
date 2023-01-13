@@ -1,6 +1,6 @@
 import React from 'react';
 import {useParams,useHistory} from 'react-router-dom';
-import useTags from 'useTag';
+import useTags from 'hooks/useTag';
 import Layout from 'components/Layout';
 import Icon from 'components/Icon';
 import {ButtonWrapper} from 'components/Button';
@@ -54,11 +54,13 @@ const Tag: React.FC =() =>{
      </CenterWrapper>
    </div>
   )
+
   //返回上一级目录，tags 直接绑定在Icon -svg上，需要重新定义扩大Icon的属性，也使用了classnames组件添加多个classname
   const history = useHistory()
   const onClickBack = () =>{
       history.goBack()
   }
+
   return(
     <Layout>
       <Topbar>
