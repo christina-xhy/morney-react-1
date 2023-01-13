@@ -33,10 +33,12 @@ function Money() {
   const {records,addRecord} = useRecords()
   //把select 传入
   const submit = () =>{
-    addRecord(selected)
-    alert('保存成功')
-    setSelected(defaultFormData)
+    if(addRecord(selected)){
+      alert('保存成功')
+      setSelected(defaultFormData)
+    }
   }
+
     //变量以参数形式传入动态修改，数据类型是obj ,同时需要设置参数类型
     //typeof 是获取值得类型 Partial 是这个对象内部的部分类型，新增一个obj
   const onChange= (obj : Partial< typeof selected>) =>{
