@@ -13,7 +13,7 @@ import {useUpdate} from './useUpdate';
 //   chartedAt:string
 // }//ISO 8610 international standard date 合并 新的类型
 
-type RecordItem ={
+export type RecordItem ={
   tagIds: number[]
   note:string
   category:'-' | '+'

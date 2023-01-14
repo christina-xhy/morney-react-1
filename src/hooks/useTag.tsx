@@ -5,7 +5,10 @@ import {useUpdate} from './useUpdate';
 
 //自定义hook 封装成组件
 const defaultTags =[
-
+  {id:createId(),name:'衣'},
+  {id:createId(),name:'食'},
+  {id:createId(),name:'住'},
+  {id:createId(),name:'行'},
 ]
 //定义在useTags函数外面，数据则只渲染一次。或者用use其他的hook 包裹
 
@@ -15,7 +18,7 @@ const defaultTags =[
 // localstorage 持久化defaultTags
 //在get时做判断，并设置初始值
 const useTags = ()=>{
-  const [tags,setTags] = useState<{id: number,name: string}[]>([])
+  const [tags,setTags] = useState<{id: number,name: string}[]>(defaultTags)
   //下次更新希望去localstorage获取数据
   useEffect(()=>{
    let localTags = JSON.parse(    window.localStorage.getItem('tags') || '[]')//[]为保底，不为undefined
@@ -90,11 +93,9 @@ const deleteTag = ( id:number ) =>{
 
   const getName = (id:number)=>{
     const tag = tags.filter(t => t.id === id)[0]
-    return tag? tag.name : '';
+    return tag ? tag.name : '';
   }
-
   //类型是ID和Name 那个数据
-
   return {tags,setTags,findTag,updateTag,findTagIndex,deleteTag,addTag,getName} //必须 对象形式  return出去
 }
 
