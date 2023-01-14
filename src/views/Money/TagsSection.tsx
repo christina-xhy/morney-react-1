@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import React from 'react';
 import useTags from '../../hooks/useTag';
-import {createId} from '../../lib/createId';
+
 
 const Wrapper=styled.section`
   background: #ffffff;
@@ -40,7 +40,7 @@ type Props = {
   onChange:(selected:number[])=> void;
 }//定义一个类型，这个类型是父子通信 props传过来的；
 const TagsSection : React.FC<Props> =(props)=>{
-  const {tags,setTags,addTag} = useTags()
+  const {tags,addTag} = useTags()
   // const [selectedTagIds,setSelectedTags] = useState<string[]>([])//原本没有存储的数据需要创建selectedTags.
   const selectedTagIds = props.value//获取用户输入的标签元素
   // const onAddTag = ()=>{

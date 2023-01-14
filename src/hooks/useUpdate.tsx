@@ -1,7 +1,7 @@
 import {useEffect,useRef} from 'react';
 
 
-const useUpdate = (fn:()=>void,deps:any[])=>{
+const useUpdate = (fn:()=>void,dependency:any[])=>{
 
   const count = useRef(0)
   useEffect(()=>{
@@ -11,7 +11,7 @@ const useUpdate = (fn:()=>void,deps:any[])=>{
     if(count.current > 1){
      fn()
     }
-  },deps)
+  },[fn,dependency])
 }
 
 //先解决每次页面 从undefine 变为 【】这一次的bug  为localstorage服务

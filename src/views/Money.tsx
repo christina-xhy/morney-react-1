@@ -32,7 +32,7 @@ const CategoryWrapper = styled.div`
 type Category = '-' | '+'
 function Money() {
   const [selected,setSelected] =useState(defaultFormData)//找不到值时需要传入初始值
-  const {records,addRecord} = useRecords()
+  const {addRecord} = useRecords()
   //把select 传入
   const submit = () =>{
     if(addRecord(selected)){

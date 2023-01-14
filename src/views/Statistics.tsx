@@ -43,7 +43,7 @@ function Statistics() {
 
   //给这个盒子定义了一个key为标准寻找数据的对象，把数组创建为hash 对象  //
   // 如果没有在里面，那这个元素为【】，最后需要创建每一项的value传入这个对象
-  selectRecords.map(r  => {
+  selectRecords.forEach(r  => {
     const key = day(r.createdAt).format("YYYY-MM-DD")
       if(!(key in hash)){
         hash[key] = []

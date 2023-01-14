@@ -1,4 +1,4 @@
-import React, {ChangeEventHandler, InputHTMLAttributes} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const InputWrapper = styled.label`

@@ -1,6 +1,5 @@
 import {useEffect, useState} from 'react';
 import {createId} from '../lib/createId';
-import classnames from 'classnames'
 import {useUpdate} from './useUpdate';
 
 //自定义hook 封装成组件
@@ -37,14 +36,13 @@ const useTags = ()=>{
 
 
 
-
   //想要在这个初始数据【】数组中添加新的数据，并且记录，此时需要stringify
   //useUpdate 封装了，解决setItem时 每次页面刷新都会出现从undefined变为【】的这个bug。
   //useRef 获取当前元素 count.current 自增 1 ，跳过【】
   //再setItem
   useUpdate(()=>{
     window.localStorage.setItem('tags',JSON.stringify(tags));//这里必须变为string ，不能用tostring
-  },[tags]) // 这里必须是不可变数据，不能修改tags。   所以每次修改只能是新的tags
+  },tags) // 这里必须是不可变数据，不能修改tags。   所以每次修改只能是新的tags
 
 
   const findTag = (id:number) => tags.filter(tag => tag.id === id)[0];//【0】返回新数组的第一个元素
