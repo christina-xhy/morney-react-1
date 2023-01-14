@@ -1,5 +1,5 @@
 import Nav from './Nav';
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -13,10 +13,24 @@ const Main = styled.div`
   flex-grow: 1;//main的内容尽量足够高，flex足够高
   overflow: auto;
 `;
-const Layout = (props: any) => {
+type Props ={
+  className?: string,
+  scrollTop?:number,
+}
+//优化 固定scrollTop
+const Layout:React.FC<Props> = (props) => {
+  const mainRef = useRef<HTMLDivElement>(null)
+  //渲染之后再执行useEffect 代码
+  //useRef 现获取dom元素
+  useEffect(()=> {
+    setTimeout(() => {
+      if (!mainRef.current) {return}
+      mainRef.current.scrollTop = props.scrollTop!; // 当前的scroll值
+    }, 0)
+  },[props.scrollTop])
   return (
     <Wrapper>
-      <Main className = {props.className}>
+      <Main ref={mainRef} className = {props.className}>
         {props.children}
       </Main>
       <Nav/>
@@ -24,4 +38,8 @@ const Layout = (props: any) => {
   );
 };
 
+//给某个组件设置默认的props初始值
+Layout.defaultProps = {
+  scrollTop :0
+}
 export default Layout;

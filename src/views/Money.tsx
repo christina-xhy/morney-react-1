@@ -53,7 +53,7 @@ function Money() {
   //设置ok button submit所有的数据存在addRecord 新的容器里....
   //申明一个普通的函数
   return (
-    <MyLayout>
+    <MyLayout scrollTop ={99999}>
       <TagsSection  value = {selected.tagIds}
                     onChange={ (tagIds) =>onChange({tagIds})}/>
       <NotesSection value ={selected.note}
