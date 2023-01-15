@@ -12,6 +12,9 @@ const Wrapper = styled.div`
 const Main = styled.div`
   flex-grow: 1;//main的内容尽量足够高，flex足够高
   overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  };
 `;
 type Props ={
   className?: string,
