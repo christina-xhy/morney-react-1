@@ -35,7 +35,7 @@ const useRecords  = ()=> {
     window.localStorage.setItem('records',JSON.stringify(records))
   },records)
 
-  const addRecord = (newRecord: newRecordItem) => {
+  const addRecord = (newRecord: RecordItem) => {
     if(newRecord.amount === 0 ){
       alert('请输入金额')//用户输入0时 弹出信息
       return false
@@ -44,8 +44,10 @@ const useRecords  = ()=> {
      alert('请选择标签');//用户如果没有选择标签  弹出信息
      return false
     }
-    const record ={...newRecord,createdAt:(new Date()).toISOString()}//在原本的类型上，新增一个新的类型并渲染
-    setRecords([...records, record]);
+    if(!newRecord.createdAt){
+      newRecord.createdAt = new Date().toISOString()
+    }
+    setRecords([...records,newRecord]);
     return true
   }
 

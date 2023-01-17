@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, {ChangeEventHandler} from 'react';
+import React, {ChangeEvent} from 'react';
 import {Input} from 'components/Input';
 //value 定义元素「note」非受控组件变为受控组件；
 const Wrapper =styled.section`
@@ -9,18 +9,20 @@ const Wrapper =styled.section`
 `
 type Props = {
   value: string;
-  onChange: (value:string) => void
+  onChange: (value:object) => void
+  createdAt:string
 }
 const NotesSection:React.FC<Props> = (props)=>{
   const note =props.value
-  const onChange:ChangeEventHandler<HTMLInputElement> = (e)=>{
-    props.onChange(e.target.value)
+  const createdAt = props.createdAt
+  const onChange= (e:React.ChangeEvent<HTMLInputElement>,key:string)=>{
+    props.onChange({[key]:e.target.value})
   }
 
   return(
     <Wrapper>
-      <Input label = '备注'  type = 'text' value = {note} onChange={onChange} placeholder='在这里添加备注'>
-      </Input>
+      <Input label = '备注'  type = 'text' value = {note} onChange={(e)=>{onChange(e,'note')}} placeholder='在这里添加备注'></Input>
+      <Input label = '日期'  type = 'text' value = {createdAt} onChange={(e)=>{onChange(e,'createdAt')}} placeholder='在这里添加备注'></Input>
     </Wrapper>
   )
 }

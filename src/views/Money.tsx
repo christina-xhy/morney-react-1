@@ -24,7 +24,8 @@ const defaultFormData = {
   tagIds:[] as number[],
   note:'',
   category:'-' as Category,
-  amount: 0
+  amount: 0,
+  createdAt: new Date().toISOString()
 }
 const CategoryWrapper = styled.div`
   background:pink;
@@ -56,8 +57,8 @@ function Money() {
     <MyLayout scrollTop ={99999}>
       <TagsSection  value = {selected.tagIds}
                     onChange={ (tagIds) =>onChange({tagIds})}/>
-      <NotesSection value ={selected.note}
-                    onChange ={ (note)=> onChange({note})}/>
+      <NotesSection value ={selected.note}  createdAt = {selected.createdAt}
+                    onChange ={ (value:object)=> onChange(value)}/>
       <CategoryWrapper>
         <CategorySection value ={selected.category}
                          onChange ={(category)=> onChange({category})}/>
