@@ -1,99 +1,53 @@
 import React, {useEffect, useRef, useState} from 'react';
 import * as echarts from 'echarts';
+import styled from 'styled-components';
+
+const Wrapper =styled.div`
+  overflow: auto;
+  .chart{
+    width:500%;
+  }
+`
 
 const options = {
-  legend: {
-    data: [
-      "3-11岁任务数",
-      "3-11岁全程接种量",
-      "60岁任务数",
-      "60岁全程接种量",
-      "80岁任务数",
-      "80岁全程接种量",
-      "完成率",
+    grid:{
+      left:0,
+      right:0,
+    },
+    xAxis: {
+      type: 'category',
+      data: [
+        '1', '2', '3', '4', '5', '6', '7','8','9','10',
+        '11', '12', '13', '14', '15', '16', '17','18','19','20',
+        '21', '22', '23', '24', '25', '26', '27','28','29','30',
+      ]
+    },
+    yAxis: {
+      type: 'value',
+      show:false,
+    },
+    tooltip: {
+      trigger: "axis",
+      show:true,
+      axisPointer: {
+        type: "shadow",
+      },
+      textStyle: {
+        fontSize: 14,
+      },
+    },
+    series: [
+      {
+        data: [
+          150, 230, 224, 218, 135, 147, 260,
+          150, 230, 224, 218, 135, 147, 260,
+          150, 230, 224, 218, 135, 147, 260,
+          150, 230, 224, 218, 135, 147, 260,
+          150, 230
+        ],
+        type: 'line'
+      },
     ],
-  },
-  xAxis: {
-    type: "category",
-    data: ["街道1", "街道2", "街道3", "街道4", "街道5", "街道6", "街道7"],
-  },
-  yAxis: [
-    { type: "value" },
-    {
-      type: "value",
-      name: "%",
-      nameTextStyle: {
-        color: "#ccc",
-        padding: [0, 0, 10, -30],
-      },
-      splitNumber: 5,
-      splitLine: {
-        show: true,
-        lineStyle: {
-          type: "dashed",
-          width: 1,
-          color: ["#ccc", "#ccc"],
-        },
-      },
-      axisLabel: {
-        show: true,
-        textStyle: {
-          fontSize: 12,
-        },
-      },
-    },
-  ],
-  tooltip: {
-    trigger: "axis",
-    axisPointer: {
-      type: "shadow",
-    },
-    textStyle: {
-      color: "#fff",
-      align: "left",
-      fontSize: 14,
-    },
-    backgroundColor: "rgba(0,0,0,0.8)",
-  },
-  series: [
-    {
-      name: "3-11岁任务数",
-      data: [150, 230, 224, 218, 135, 147, 260],
-      type: "bar",
-    },
-    {
-      name: "3-11岁全程接种量",
-      data: [150, 230, 224, 218, 135, 147, 260],
-      type: "bar",
-    },
-    {
-      name: "60岁任务数",
-      data: [150, 230, 224, 218, 135, 147, 260],
-      type: "bar",
-    },
-    {
-      name: "60岁全程接种量",
-      data: [880, 30, 124, 118, 35, 47, 160],
-      type: "bar",
-    },
-    {
-      name: "80岁任务数",
-      data: [660, 30, 124, 118, 35, 47, 160],
-      type: "bar",
-    },
-    {
-      name: "80岁全程接种量",
-      data: [880, 30, 124, 118, 35, 47, 160],
-      type: "bar",
-    },
-    {
-      name: "完成率",
-      data: [50, 130, 124, 18, 35, 47, 160],
-      yAxisIndex: 1,
-      type: "line",
-      smooth: true,
-    },
-  ],
 }
 export function Echarts(){
   const [option,setOption] = useState(options)
@@ -106,7 +60,7 @@ export function Echarts(){
     // @ts-ignore
     container.current.style.height=`${(width-20)*1.2}px`
     // @ts-ignore
-    chart.current = echarts.init(container.current,'dark','line')
+    chart.current = echarts.init(container.current,'dark')
     console.log(container.current);
   }, []);
   useEffect(()=>{
@@ -115,6 +69,8 @@ export function Echarts(){
   },[option])
 
   return(
-    <div ref={container}/>
+    <Wrapper>
+      <div ref={container} className='chart'></div>
+    </Wrapper>
   )
 }

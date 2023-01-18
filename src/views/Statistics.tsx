@@ -8,7 +8,12 @@ import day from 'dayjs'
 import {ReactNode} from 'react';
 import {Echarts} from '../components/echarts';
 // ccc
-
+const EchartsWrapper = styled.div`
+  .echarts{
+    max-width: 100%;
+    height:400px;
+  }
+`
 const CategoryWrapper = styled.div`
   background: white;
 `
@@ -65,12 +70,18 @@ function Statistics() {
   })
 
 
+  // @ts-ignore
+  // @ts-ignore
+  // @ts-ignore
   return (
     <Layout>
       <CategoryWrapper>
         <CategorySection value ={category}
                          onChange ={(value)=> setCategory(value)}/>
       </CategoryWrapper>
+      <EchartsWrapper>
+        <div className='echarts'><Echarts/></div>
+      </EchartsWrapper>
       {array.map(([date,records]) =>
         <div>
            <Header>
@@ -99,7 +110,8 @@ function Statistics() {
              })}
            </div>
       </div>)}
-      <Echarts/>
+
+
     </Layout>
   );
 }
