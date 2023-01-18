@@ -27,7 +27,7 @@ const NotesSection:React.FC<Props> = (props)=>{
       {/*<Input label = '日期'  type = 'text' value = {createdAt} onChange={(e)=>{onChange(e,'createdAt')}} placeholder='在这里添加备注'></Input>*/}
     <div onClick={()=>{setVisible(true)}}>
         <div>
-          {dayjs(createdAt).format('YYYY_MM_DD')}
+          {dayjs(createdAt).format('YYYY-MM-DD')}
         </div>
     </div>
       <DatePicker

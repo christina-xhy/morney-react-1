@@ -6,7 +6,7 @@ import useTags from '../hooks/useTag';
 import styled from 'styled-components';
 import day from 'dayjs'
 import {ReactNode} from 'react';
-import StatisticsChats from './charts/StatisticsChats';
+import {Echarts} from '../components/echarts';
 // ccc
 
 const CategoryWrapper = styled.div`
@@ -99,8 +99,7 @@ function Statistics() {
              })}
            </div>
       </div>)}
-
-      <StatisticsChats></StatisticsChats>
+      <Echarts/>
     </Layout>
   );
 }
