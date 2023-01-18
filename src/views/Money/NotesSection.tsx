@@ -1,6 +1,8 @@
 import styled from "styled-components";
-import React, {ChangeEvent} from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import {Input} from 'components/Input';
+import {DatePicker} from 'antd-mobile';
+import dayjs from 'dayjs';
 //value 定义元素「note」非受控组件变为受控组件；
 const Wrapper =styled.section`
   background-color:#f5f5f5;
@@ -18,11 +20,23 @@ const NotesSection:React.FC<Props> = (props)=>{
   const onChange= (e:React.ChangeEvent<HTMLInputElement>,key:string)=>{
     props.onChange({[key]:e.target.value})
   }
-
+  const [visible,setVisible]=useState(false)
   return(
     <Wrapper>
       <Input label = '备注'  type = 'text' value = {note} onChange={(e)=>{onChange(e,'note')}} placeholder='在这里添加备注'></Input>
-      <Input label = '日期'  type = 'text' value = {createdAt} onChange={(e)=>{onChange(e,'createdAt')}} placeholder='在这里添加备注'></Input>
+      {/*<Input label = '日期'  type = 'text' value = {createdAt} onChange={(e)=>{onChange(e,'createdAt')}} placeholder='在这里添加备注'></Input>*/}
+    <div onClick={()=>{setVisible(true)}}>
+        <div>
+          {dayjs(createdAt).format('YYYY_MM_DD')}
+        </div>
+    </div>
+      <DatePicker
+        visible={visible}
+        onClose={()=>{
+          setVisible(false)
+        }}
+        onConfirm={time=> props.onChange({createdAt:time})}
+      />
     </Wrapper>
   )
 }
