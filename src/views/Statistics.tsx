@@ -1,5 +1,5 @@
 import Layout from '../components/Layout';
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import CategorySection from './Money/CategorySection';
 import {RecordItem, useRecords} from '../hooks/useRecords';
 import useTags from '../hooks/useTag';
@@ -8,11 +8,13 @@ import day from 'dayjs'
 import {ReactNode} from 'react';
 import {Echarts} from '../components/echarts';
 // ccc
-const EchartsWrapper = styled.div`
+const ChartWrapper = styled.div`
     overflow: auto;
-  > .chart-wrapper{
-    max-width:100%;
-    height:400px;
+  > .chart-bar{
+    width:430%;
+  }
+  &::-webkit-scrollbar{
+    display: none;
   }
 `
 const CategoryWrapper = styled.div`
@@ -47,7 +49,6 @@ function Statistics() {
   //getName是useTags组件的数据，类型为 tags: {id: number, name: string}类型
   const selectRecords = records.filter(r => r.category === category)
   const hash : { [k:string] :RecordItem[] }= {} // {2023-1-14:[item,item],2023-1-14:[item,item],2023-1-14:[item,item]}
-
   //给这个盒子定义了一个key为标准寻找数据的对象，把数组创建为hash 对象  //
   // 如果没有在里面，那这个元素为【】，最后需要创建每一项的value传入这个对象
   selectRecords.forEach(r  => {
@@ -69,8 +70,54 @@ function Statistics() {
          if (a[0] < b[0]) return 1 //1 旧日期
          return 0
   })
+  const option={
+  tooltip: {
+    trigger: "item",
+    show:true,
+    axisPointer: {
+      type: "shadow",
+    },
+    textStyle: {
+      fontSize: 14,
+    },
+  },
+  grid:{
+    left:0,
+    right:0,
+  },
+  xAxis: {
+    type: 'category',
+    data: [
+      '1', '2', '3', '4', '5', '6', '7','8','9','10',
+      '11', '12', '13', '14', '15', '16', '17','18','19','20',
+      '21', '22', '23', '24', '25', '26', '27','28','29','30',
+    ]
+  },
+  yAxis: {
+    type: 'value',
+    show:false,
+  },
+  series: [
+    {
+      data: [
+        150, 230, 224, 218, 135, 147, 260,
+        150, 230, 224, 218, 135, 147, 260,
+        150, 230, 224, 218, 135, 147, 260,
+        150, 230, 224, 218, 135, 147, 260,
+        150, 230
+      ],
+      type: 'line'
+    },
+  ],
+}
+const ref = useRef<HTMLDivElement>(null)
+  useEffect(()=>{
+    ref.current!.scrollLeft = ref.current!.scrollWidth
+  },[])
 
-
+  // @ts-ignore
+  // @ts-ignore
+  // @ts-ignore
   // @ts-ignore
   // @ts-ignore
   // @ts-ignore
@@ -82,14 +129,11 @@ function Statistics() {
         <CategorySection value ={category}
                          onChange ={(value)=> setCategory(value)}/>
       </CategoryWrapper>
-      <EchartsWrapper>
-        <div className='line-chart'>
-
-          <div className='chartWrapper'>
-            <Echarts />
+      <ChartWrapper ref={ref}>
+          <div className='chart-bar'>
+            <Echarts option={option}/>
           </div>
-        </div>
-      </EchartsWrapper>
+      </ChartWrapper>
       {array.map(([date,records]) =>
         <div>
            <Header>
