@@ -9,12 +9,10 @@ import {ReactNode} from 'react';
 import {Echarts} from '../components/echarts';
 // ccc
 const EchartsWrapper = styled.div`
-  > .chart-wrapper{
     overflow: auto;
-    > .chart{
-      max-width:100%;
-      height:400px;
-    }
+  > .chart-wrapper{
+    max-width:100%;
+    height:400px;
   }
 `
 const CategoryWrapper = styled.div`
@@ -86,6 +84,7 @@ function Statistics() {
       </CategoryWrapper>
       <EchartsWrapper>
         <div className='line-chart'>
+
           <div className='chartWrapper'>
             <Echarts />
           </div>
