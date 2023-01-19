@@ -9,9 +9,12 @@ import {ReactNode} from 'react';
 import {Echarts} from '../components/echarts';
 // ccc
 const EchartsWrapper = styled.div`
-  .echarts{
-    max-width: 100%;
-    height:400px;
+  > .chart-wrapper{
+    overflow: auto;
+    > .chart{
+      max-width:100%;
+      height:400px;
+    }
   }
 `
 const CategoryWrapper = styled.div`
@@ -73,6 +76,8 @@ function Statistics() {
   // @ts-ignore
   // @ts-ignore
   // @ts-ignore
+  // @ts-ignore
+  // @ts-ignore
   return (
     <Layout>
       <CategoryWrapper>
@@ -80,7 +85,11 @@ function Statistics() {
                          onChange ={(value)=> setCategory(value)}/>
       </CategoryWrapper>
       <EchartsWrapper>
-        <div className='echarts'><Echarts/></div>
+        <div className='line-chart'>
+          <div className='chartWrapper'>
+            <Echarts />
+          </div>
+        </div>
       </EchartsWrapper>
       {array.map(([date,records]) =>
         <div>
@@ -110,8 +119,6 @@ function Statistics() {
              })}
            </div>
       </div>)}
-
-
     </Layout>
   );
 }

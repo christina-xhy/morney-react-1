@@ -3,11 +3,11 @@ import * as echarts from 'echarts';
 import styled from 'styled-components';
 
 const Wrapper =styled.div`
-  overflow: auto;
-  .chart{
-    width:500%;
+  > .chartsItem{
+    max-width:100%;
+    height:50vh;
   }
-`
+  `
 
 const options = {
     grid:{
@@ -70,7 +70,8 @@ export function Echarts(){
 
   return(
     <Wrapper>
-      <div ref={container} className='chart'></div>
+      <div ref={container} className='chartsItem'/>
+      <div className='chart'/>
     </Wrapper>
   )
 }
