@@ -14,9 +14,10 @@ const ChartWrapper = styled.div`
     width:430%;
   }
   &::-webkit-scrollbar{
-    display: none;
+    display:none;
   }
 `
+
 const CategoryWrapper = styled.div`
   background: white;
 `

@@ -8,7 +8,7 @@ export function Echarts(props:any){
   useEffect(() => {
     const width = document.documentElement.clientWidth
     // @ts-ignore
-    container.current.style.width=`${width-20}px`
+    // container.current.style.width=`${width-20}px`
     // @ts-ignore
     container.current.style.height=`${(width-20)*1.2}px`
     // @ts-ignore
